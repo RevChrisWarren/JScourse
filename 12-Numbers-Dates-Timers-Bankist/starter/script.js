@@ -91,9 +91,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -164,11 +163,10 @@ btnLogin.addEventListener('click', function (e) {
   );
   console.log(currentAccount);
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -182,7 +180,7 @@ btnLogin.addEventListener('click', function (e) {
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
@@ -206,7 +204,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = +inputLoanAmount.value;
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -223,7 +221,7 @@ btnClose.addEventListener('click', function (e) {
 
   if (
     inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin
+    +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
@@ -251,3 +249,81 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+/*
+console.log(23 === 23.0);
+
+//We use base 10 (0-9) 1/10 = 0.1 3/10 = 3.3333333333...
+//Computers use base 2 (0,1)--This causes unusual results
+console.log(0.1 + 0.2);
+
+
+//Convert strings to numbers
+console.log(Number('23'));
+console.log(+'23');
+
+//Parse number from string--Must start with a number
+//ParseInt accepts second paraneter (radix, or base ofsystem)
+console.log(Number.parseInt('30px', 10));
+console.log(Number.parseInt('2.5px', 10));
+console.log(Number.parseFloat('2.5rem'));
+//Also Works, but not recommended
+console.log(parseFloat('2.5rem'));
+
+console.log('-isNaN-');
+//isNaN
+console.log(Number.isNaN(20));
+console.log(Number.isNaN('20'));
+console.log(Number.isNaN(+'20x'));
+console.log(Number.isNaN(23 / 0));//not not a number...
+
+console.log('-isFinite-');
+//USE isFinite instead of isNaN
+console.log(Number.isFinite(20));
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(+'20x'));
+console.log(Number.isFinite(23 / 0));
+
+console.log('-isInteger-');
+console.log(Number.isInteger(23));
+console.log(Number.isInteger(23.0));
+console.log(Number.isInteger(23.1));
+console.log(Number.isInteger(23 / 0));
+*/
+
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2)) //also square root
+
+console.log(Math.max(5, 18, 24, 11, 2));
+console.log(Math.min(5, 18, 24, 11, 2));
+//area of circle
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+//random gives us num between 0 and 1 ->
+//when multpied by max-min, get number between 0 & (max - min) -> 
+//add min to this, we get a number between min and max-min plus min
+
+console.log(randomInt(10, 20));
+
+//Rounding Integers
+console.log(Math.trunc(23.3));
+console.log(Math.trunc(23.9));
+console.log(Math.round(23.9));
+console.log(Math.round(23.49));
+console.log(Math.ceil(23.9));
+console.log(Math.ceil(23.49));
+console.log(Math.floor(23.9));
+console.log(Math.floor(23.49));
+
+
+console.log(Math.trunc(-23.3));
+console.log(Math.floor(-23.49));
+
+//Rounding decimals (floating point numbers) toFixed returns string
+
+console.log((2.7).toFixed(0));
+console.log((2.345).toFixed(2));
+console.log(+(2.345).toFixed(2));//+ makes it a number
+
