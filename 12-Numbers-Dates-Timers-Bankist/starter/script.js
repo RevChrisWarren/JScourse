@@ -288,7 +288,7 @@ console.log(Number.isInteger(23));
 console.log(Number.isInteger(23.0));
 console.log(Number.isInteger(23.1));
 console.log(Number.isInteger(23 / 0));
-*/
+
 
 console.log(Math.sqrt(25));
 console.log(25 ** (1 / 2)) //also square root
@@ -327,3 +327,44 @@ console.log((2.7).toFixed(0));
 console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2));//+ makes it a number
 
+
+
+//Remainder Operator
+console.log(5 % 2);
+console.log(8 % 3);
+console.log(8 % 2);
+
+
+//isEven
+const isEven = n => n % 2 === 0;
+
+console.log(isEven(8));
+console.log(isEven(823));
+console.log(isEven(514));
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered'
+    if (i % 3 === 0) row.style.backgroundColor = 'blue'
+  })
+})
+*/
+
+//NUMERIC SEPARATORS uses underscore
+//287,460,000,000
+const diameter = 287_460_000_000;
+
+console.log(diameter);
+
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+console.log(transferFee1, transferFee2);
+
+const PI = 3.14159265
+console.log(PI);
+
+console.log((Number('230000')))
+console.log((Number('230_000'))) //DOES NOT WORK
