@@ -409,20 +409,38 @@ console.log(10 / 3);
 
 //Create a date
 
-const now = new Date();
-console.log(now);
+// const now = new Date();
+// console.log(now);
 
-console.log(new Date('Aug 02 2020 18:05:41'));
+// console.log(new Date('Aug 02 2020 18:05:41'));
 
-console.log(new Date('December 24, 2015'));
+// console.log(new Date('December 24, 2015'));
 
-console.log(new Date(account1.movementsDates[0]));
+// console.log(new Date(account1.movementsDates[0]));
 
-console.log(new Date(2037, 10, 27, 15, 23, 5));
-console.log(new Date(2037, 10, 33, 15, 23, 5));
+// console.log(new Date(2037, 10, 27, 15, 23, 5));
+// console.log(new Date(2037, 10, 33, 15, 23, 5));
 
-//miliseconds since initial UNIX time Jan 1, 1970
-console.log(new Date(0));
-console.log(new Date(3 * 24 * 60 * 60 * 1000));//This number is called a timestamp
+// //miliseconds since initial UNIX time Jan 1, 1970
+// console.log(new Date(0));
+// console.log(new Date(3 * 24 * 60 * 60 * 1000));//This number is called a timestamp
 
 //Date methods
+const future = new Date(2037, 10, 27, 15, 23)
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+console.log(new Date(2142969780000));
+console.log(new Date(1665022665554));
+
+console.log(Date.now());
+//SET METHODS
+future.setFullYear(2040);
+console.log(future);
