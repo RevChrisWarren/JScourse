@@ -368,7 +368,7 @@ console.log(PI);
 
 console.log((Number('230000')))
 console.log((Number('230_000'))) //DOES NOT WORK
-*/
+
 
 //BigInt
 //Numbers are represented in 64bits, only 53 used to store digits
@@ -403,3 +403,26 @@ console.log(huge + ' is really large')
 //divisions
 console.log(10n / 3n);
 console.log(10 / 3);
+*/
+
+//DATES and TIME
+
+//Create a date
+
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Aug 02 2020 18:05:41'));
+
+console.log(new Date('December 24, 2015'));
+
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 27, 15, 23, 5));
+console.log(new Date(2037, 10, 33, 15, 23, 5));
+
+//miliseconds since initial UNIX time Jan 1, 1970
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));//This number is called a timestamp
+
+//Date methods
