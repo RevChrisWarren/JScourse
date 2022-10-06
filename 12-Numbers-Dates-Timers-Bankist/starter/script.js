@@ -369,3 +369,37 @@ console.log(PI);
 console.log((Number('230000')))
 console.log((Number('230_000'))) //DOES NOT WORK
 */
+
+//BigInt
+//Numbers are represented in 64bits, only 53 used to store digits
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(1291847812347238947829034712038947201947);
+console.log(1291847812347238947829034712038947201947n);
+
+//Operations
+console.log(100000n * 100000n);
+
+const huge = 2492847123987389572394857n
+const num = 75
+console.log(huge * BigInt(num));
+
+
+console.log(20n > 15);
+
+console.log(20n === 20);
+console.log(typeof (20n));
+console.log(20n == 20);
+
+//String Concat
+console.log(huge + ' is really large')
+
+//divisions
+console.log(10n / 3n);
+console.log(10 / 3);
