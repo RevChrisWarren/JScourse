@@ -348,7 +348,7 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue'
   })
 })
-*/
+
 
 //NUMERIC SEPARATORS uses underscore
 //287,460,000,000
@@ -368,3 +368,4 @@ console.log(PI);
 
 console.log((Number('230000')))
 console.log((Number('230_000'))) //DOES NOT WORK
+*/
