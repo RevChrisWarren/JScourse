@@ -538,7 +538,7 @@ const calcDaysPassed = (date1, date2) => Math.abs(date2 - date1) /
 const days1 = calcDaysPassed(new Date(2037, 10, 19, 15, 23), new Date(2037, 10, 30, 19, 23))
 
 console.log(days1);
-*/
+
 const options1 = {
   style: 'currency',
   unit: 'celsius',
@@ -552,3 +552,8 @@ console.log('Germany: ', new Intl.NumberFormat('de-DE', options1).format(num));
 console.log('Syria: ', new Intl.NumberFormat('ar-SY', options1).format(num));
 console.log('Great Britain', new Intl.NumberFormat('en-GB', options1).format(num));
 console.log(navigator.language, new Intl.NumberFormat(navigator.language, options1).format(num));
+*/
+
+//Set Timeout and Set Interval
+
+setTimeout(() => console.log('Here is your pizza 🍕'), 3000);
