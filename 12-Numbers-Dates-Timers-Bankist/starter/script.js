@@ -84,7 +84,7 @@ const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) => Math.round(Math.abs(date2 - date1) /
     (1000 * 60 * 60 * 24))
   const daysPassed = calcDaysPassed(new Date(), date)
-  console.log(daysPassed);
+  //console.log(daysPassed);
 
   if (daysPassed === 0) return 'Today'
   if (daysPassed === 1) return 'Yesterday'
@@ -197,7 +197,7 @@ const options = {
 }
 
 const locale = navigator.language
-console.log(locale);
+//console.log(locale);
 labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
 ///////////////////////////////////////
 // Event handlers
@@ -555,5 +555,10 @@ console.log(navigator.language, new Intl.NumberFormat(navigator.language, option
 */
 
 //Set Timeout and Set Interval
-
+const ingredients = ['oives', 'spinach']
 setTimeout(() => console.log('Here is your pizza 🍕'), 3000);
+console.log('Waiting...');
+
+const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}🍕`), 3000, ...ingredients);
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
