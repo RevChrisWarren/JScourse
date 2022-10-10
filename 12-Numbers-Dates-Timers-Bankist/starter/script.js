@@ -565,3 +565,11 @@ console.log('Waiting...');
 const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}🍕`), 3000, ...ingredients);
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
+//SetInterval
+setInterval(function () {
+  const now = new Date();
+  const hrs = `${now.getHours()}`
+  const mins = `${now.getMinutes()}`.padStart(2, '0')
+  const secs = `${now.getSeconds()}`.padStart(2, '0')
+  console.log(`${hrs}:${mins} ${secs}s`)
+}, 1000)
