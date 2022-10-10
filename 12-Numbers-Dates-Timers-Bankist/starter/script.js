@@ -209,7 +209,22 @@ currentAccount = account1
 updateUI(currentAccount)
 containerApp.style.opacity = 100
 
+const startLogoutTimer = function () {
+  //Set time to five minutes
+  let time = 100;
 
+  //Call timer every second
+  setInterval(function () {
+    const min = time / 60;
+    //In each call, print remaining time to UI
+    //When time is at 00, stop timer and log out user
+    labelTimer.textContent = min;
+    //decrease 1 second
+    time--
+
+  }, 1000)
+
+}
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -252,6 +267,7 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+    startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -555,7 +571,7 @@ console.log('Germany: ', new Intl.NumberFormat('de-DE', options1).format(num));
 console.log('Syria: ', new Intl.NumberFormat('ar-SY', options1).format(num));
 console.log('Great Britain', new Intl.NumberFormat('en-GB', options1).format(num));
 console.log(navigator.language, new Intl.NumberFormat(navigator.language, options1).format(num));
-*/
+
 
 //Set Timeout and Set Interval
 const ingredients = ['oives', 'spinach']
@@ -573,3 +589,4 @@ setInterval(function () {
   const secs = `${now.getSeconds()}`.padStart(2, '0')
   console.log(`${hrs}:${mins} ${secs}s`)
 }, 1000)
+*/
