@@ -198,7 +198,7 @@ const locale = navigator.language
 labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 
 //Fake always logged in
@@ -228,7 +228,8 @@ const startLogoutTimer = function () {
 
   tick();
   //Call timer every second
-  const timer = setInterval(tick, 1000)
+  const timer = setInterval(tick, 1000);
+  return timer
 
 }
 
@@ -273,7 +274,8 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
-    startLogoutTimer();
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
