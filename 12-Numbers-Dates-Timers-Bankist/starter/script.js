@@ -143,14 +143,11 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-
-  formatCur(incomes, acc.locale, acc.currency)
   labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-
   labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency)
 
   const interest = acc.movements
@@ -205,24 +202,33 @@ let currentAccount;
 
 
 //Fake always logged in
-currentAccount = account1
-updateUI(currentAccount)
-containerApp.style.opacity = 100
+// currentAccount = account1
+// updateUI(currentAccount)
+// containerApp.style.opacity = 100
 
 const startLogoutTimer = function () {
   //Set time to five minutes
-  let time = 100;
-
-  //Call timer every second
-  setInterval(function () {
-    const min = time / 60;
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
     //In each call, print remaining time to UI
     //When time is at 00, stop timer and log out user
-    labelTimer.textContent = min;
     //decrease 1 second
-    time--
 
-  }, 1000)
+    labelTimer.textContent = `${min}:${sec}`;
+
+    if (time === 0) {
+      clearInterval(timer)
+      containerApp.style.opacity = 0;
+      labelWelcome.textContent = `Log in to get started!`
+    }
+    time--
+  }
+  let time = 120;
+
+  tick();
+  //Call timer every second
+  const timer = setInterval(tick, 1000)
 
 }
 
@@ -231,9 +237,9 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    (acc) => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
+  //console.log(currentAccount);
 
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
