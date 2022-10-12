@@ -139,5 +139,22 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' })
 });
 
+const h1 = document.querySelector('h1');
+// h1.addEventListener('mouseenter', function (e) {
+//   alert('addEventListener: Great! You are reading the heading')
+// });
+// //OLD SCHOOL
+// h1.onmouseenter = function (e) {
+//   alert('mouseenter instead: Great! You are reading the heading')
+// };
+//Add event listener allows us to add multiple functions to an event
 
+const h1Alert = function (e) {
+  alert('addEventListener: Great! You are reading the heading')
+  //h1.removeEventListener('mouseenter', h1Alert)
+}
+
+h1.addEventListener('mouseenter', h1Alert);
+
+setTimeout(() => h1.removeEventListener('mouseenter', h1Alert), 5000)
 
