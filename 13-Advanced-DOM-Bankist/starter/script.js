@@ -58,13 +58,28 @@ btnScrollTo.addEventListener('click', function (e) {
 ///////////////////////////////////////////
 //PAGE NAVIGATION
 //Implementing smooth scrolling
-document.querySelectorAll('.nav__link').forEach(function (el) {
-  el.addEventListener('click', function (e) {
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault()
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
+//   })
+// })
+//NOW USING EVENT DELEGATION
+//Add event listener to common parent
+//DETERMINE WHICH ELEMENT ORIGINATED THE EVENT
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
+
+  //Matching Strategy
+  if (e.target.classList.contains('nav__link')) {
+    //console.log('link');
     e.preventDefault()
-    const id = this.getAttribute('href');
-    console.log(id);
+    const id = e.target.getAttribute('href');
+    //console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
-  })
+  }
 })
 
 ///////////////////////////////////////////
