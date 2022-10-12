@@ -38,10 +38,34 @@ console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-document.querySelector('.header');
+const header = document.querySelector('.header');
 const allSection = document.querySelectorAll('.section')
 console.log(allSection);
 
 document.getElementById('section-1')
 const allButtons = document.getElementsByTagName('button');
 console.log(allButtons);
+
+const btnsByClass = document.getElementsByClassName('btn')
+console.log(btnsByClass);
+
+//Creating and Inserting Elements'
+// .insertAdjacentHTML
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent = 'We use cookies for improved functionality and analytics.';
+message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// header.prepend(message)
+header.append(message)
+// header.append(message.cloneNode(true))
+
+// header.before(message)
+// header.after(message)
+
+//Delete Elements
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+    //OLD WAY message.parentElement.removeChild(message)
+  })
