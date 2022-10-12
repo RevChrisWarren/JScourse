@@ -33,7 +33,7 @@ document.addEventListener('keydown', function (e) {
 });
 ///////////////////////////////////////////
 ///////////////////////////////////////////
-
+/*
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -80,3 +80,39 @@ console.log(message.style.width);
 console.log(getComputedStyle(message).height);
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
+//Changing CSS styles with JS
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered')
+//NOW ATTRIBUTES
+
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+console.log(logo.designer); //doesn't work because this is not a normal tag
+console.log(logo.getAttribute('designer'));
+
+logo.alt = 'Beautiful Minimalist Logo'
+console.log(logo.alt);
+
+logo.setAttribute('company', 'Bankist')
+console.log(logo.getAttribute('company'));
+
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+//DATA ATTRIBUTES
+
+console.log(logo.dataset.versionNumber);
+
+//CLASSES
+logo.classList.add('c', 'j')
+logo.classList.remove('c')
+logo.classList.toggle('c')
+logo.classList.contains('c')
+//DONT USE THIS
+// logo.className ='jonas'
+*/
