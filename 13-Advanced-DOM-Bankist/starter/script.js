@@ -116,3 +116,18 @@ logo.classList.contains('c')
 //DONT USE THIS
 // logo.className ='jonas'
 */
+//SMOOTH SCROLLING
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current Scroll (X/Y', window.scrollX, scrollY);
+
+  console.log('height and width of viewoport', document.documentElement.clientHeight, document.documentElement.clientWidth);
+  window.scrollTo(s1coords.left + window.scrollX, s1coords.top + window.scrollY)
+
+})
