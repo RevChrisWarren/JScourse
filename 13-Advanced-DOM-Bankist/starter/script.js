@@ -6,7 +6,11 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const s1coords = section1.getBoundingClientRect();
-///////////////////////////////////////
+const tabs = document.querySelectorAll('.operations__tab')
+const tableContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+/////////////////////////////////////
 // Modal window
 
 
@@ -55,6 +59,9 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' })
 });
+
+
+
 ///////////////////////////////////////////
 //PAGE NAVIGATION
 //Implementing smooth scrolling
@@ -255,3 +262,6 @@ console.log(h1.parentElement.children);
   if (el !== h1) el.style.transform = 'scale(0.5)'
 })
 */
+
+//Tabbed Components
+
