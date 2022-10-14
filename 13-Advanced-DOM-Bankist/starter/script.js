@@ -217,5 +217,24 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 );
 */
 
-//Event Delegation
+//Dom Traversing
 
+const h1 = document.querySelector('h1');
+
+//Going downwards: Child--can select children that have highight class as deep as necessary
+console.log(h1.querySelectorAll('.highlight'));
+//all direct children of h1
+console.log(h1.childNodes);
+//give three elements inside h1 only for direct children
+console.log(h1.children);
+//first and last element child
+h1.firstElementChild.style.color = 'white'
+console.log(h1.firstElementChild);
+h1.lastElementChild.style.color = 'orangered'
+console.log(h1.lastElementChild);
+
+//Now going upwards in chain
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
