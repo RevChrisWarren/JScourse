@@ -10,6 +10,7 @@ const tabs = document.querySelectorAll('.operations__tab')
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
+const header = document.querySelector('.header');
 
 /////////////////////////////////////
 // Modal window
@@ -137,19 +138,36 @@ nav.addEventListener('mouseout', handleHover.bind(1))
 // })
 
 //STICKY NAV WITH INTERSECTION OBSERVER API
-const observerCallback = function (entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry);
-  })
+// const observerCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   })
+// }
+
+// const observerOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+// const observer = new IntersectionObserver(observerCallback, observerOptions);
+// observer.observe(section1);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky')
+  else nav.classList.remove('sticky')
 }
 
-const observerOptions = {
-  root: null,
-  threshold: 0.1,
-};
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-observer.observe(section1);
 
+const hdrOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: '-90px'
+}
+
+const hdrObserver = new IntersectionObserver(stickyNav, hdrOptions);
+hdrObserver.observe(header);
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 /*
