@@ -137,6 +137,18 @@ nav.addEventListener('mouseout', handleHover.bind(1))
 // })
 
 //STICKY NAV WITH INTERSECTION OBSERVER API
+const observerCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  })
+}
+
+const observerOptions = {
+  root: null,
+  threshold: 0.1,
+};
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+observer.observe(section1);
 
 ///////////////////////////////////////////
 ///////////////////////////////////////////
