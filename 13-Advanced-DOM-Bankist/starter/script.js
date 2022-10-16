@@ -151,6 +151,10 @@ nav.addEventListener('mouseout', handleHover.bind(1))
 // const observer = new IntersectionObserver(observerCallback, observerOptions);
 // observer.observe(section1);
 
+
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
 const stickyNav = function (entries) {
   const [entry] = entries;
   console.log(entry);
@@ -163,7 +167,7 @@ const stickyNav = function (entries) {
 const hdrOptions = {
   root: null,
   threshold: 0,
-  rootMargin: '-90px'
+  rootMargin: `-${navHeight}px`
 }
 
 const hdrObserver = new IntersectionObserver(stickyNav, hdrOptions);
