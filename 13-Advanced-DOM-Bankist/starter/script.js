@@ -172,6 +172,27 @@ const hdrOptions = {
 
 const hdrObserver = new IntersectionObserver(stickyNav, hdrOptions);
 hdrObserver.observe(header);
+
+//Reveal Sections
+const allSections = document.querySelectorAll('.section')
+
+const sectionReveal = function (entries, observer) {
+  const [entry] = entries
+
+  if (entry.isIntersecting) section1.classList.remove('section--hidden')
+  else section1.classList.add('section--hidden')
+}
+
+const sectionRevealOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${sectionHeight}px`
+}
+
+const sectionObserver = new IntersectionObserver(sectionReveal, sectionRevealOptions);
+allSections.forEach(function (section) {
+  sectionObserver.observe(section1)
+})
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 /*
