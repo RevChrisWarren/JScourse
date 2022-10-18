@@ -96,7 +96,7 @@ tabsContainer.addEventListener('click', function (e) {
 //Add event listener to common parent
 //DETERMINE WHICH ELEMENT ORIGINATED THE EVENT
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  console.log(e.target);
+  // console.log(e.target);
 
   //Matching Strategy
   if (e.target.classList.contains('nav__link')) {
@@ -201,12 +201,12 @@ allSections.forEach(function (section) {
 //lazy loading images
 
 const imgTargets = document.querySelectorAll('img[data-src]')
-console.log(imgTargets);
+// console.log(imgTargets);
 
 
 const loadImg = function (entries, observer) {
   const [entry] = entries
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) return;
 
@@ -486,3 +486,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
   console.log('HTML parsed and DOM tree built', e);
 });
 
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+})
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// })
