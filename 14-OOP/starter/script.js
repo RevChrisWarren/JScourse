@@ -27,12 +27,12 @@ const joy = new Person('Joy', 1984)
 // console.log(chris instanceof Person);
 
 //PROTOTYPES
-console.log(Person.prototype);
+//console.log(Person.prototype);
 
 Person.prototype.calcAge = function () {
     console.log(2022 - this.birthYear)
 }
-
+/*
 joy.calcAge();//Access to this because of prototypal inheritance
 chris.calcAge();
 
@@ -76,3 +76,34 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 
 console.dir(x => x + 1)
+*/
+
+const Car = function (make, speed) {
+    this.make = make;
+    this.speed = speed;
+}
+
+const bmw = new Car('BMW', 120);
+const mercedes = new Car('Mercedes', 95);
+
+console.log(bmw, mercedes);
+
+Car.prototype.accelerate = function () {
+    //this.speed +=10
+    this.speed = this.speed + 10
+    console.log(this.speed);
+
+};
+Car.prototype.brake = function () {
+    //this,speed -= 5
+    this.speed = this.speed - 5;
+    console.log(this.speed);
+}
+
+bmw.accelerate()
+mercedes.accelerate()
+
+bmw.brake()
+mercedes.brake()
+mercedes.brake()
+
