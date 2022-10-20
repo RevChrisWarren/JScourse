@@ -9,7 +9,6 @@ const Person = function (firstName, birthYear) {
     // this.calcAge = function () {
     //     console.log(2022 - this.birthYear)
     // }
-
 }
 
 const chris = new Person('Chris', 1974);
@@ -45,3 +44,10 @@ console.log(Person.prototype.isPrototypeOf(chris));
 console.log(Person.prototype.isPrototypeOf(Person));
 
 //May be better to call this prototype of linked object
+//setting properties on prototype
+Person.prototype.species = "Homo Sapien";
+console.log(chris, joy);
+console.log(chris.species);
+
+console.log(chris.hasOwnProperty('firstName'));
+console.log(chris.hasOwnProperty('species'));
