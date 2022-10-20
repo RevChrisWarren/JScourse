@@ -59,6 +59,20 @@ console.log(chris.__proto__.__proto__.__proto__);//Null because object is at top
 
 console.dir(Person.prototype.constructor);
 
-const arr = [3, 6, 4, 5, 8, 7, 6];
+const arr = [3, 6, 4, 5, 8, 7, 6, 6, 7, 4, 3, 56, 8, 9, 0];
 console.log(arr.__proto__);
+
 console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__.__proto__);
+
+
+//NOT A GOOD IDEA TO EXTEND A BUILT IN PROTOTYPE
+Array.prototype.unique = function () {
+    return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+
+console.dir(x => x + 1)
