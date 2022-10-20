@@ -51,3 +51,14 @@ console.log(chris.species);
 
 console.log(chris.hasOwnProperty('firstName'));
 console.log(chris.hasOwnProperty('species'));
+
+console.log(chris.__proto__);
+//Object.prototype
+console.log(chris.__proto__.__proto__);
+console.log(chris.__proto__.__proto__.__proto__);//Null because object is at top of chain
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 4, 5, 8, 7, 6];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
