@@ -225,3 +225,42 @@ sarah.init('Sarah', 1979)
 console.log(sarah);
 sarah.calcAge()
 */
+
+
+class Car {
+    constructor(make, speed) {
+
+        this.make = make;
+        this.speed = speed;
+    }
+    accelerate() {
+        this.speed += 10;
+        console.log(`The ${this.make} is traveling at ${this.speed}`);
+    }
+    brake() {
+        this.speed -= 5;
+        console.log(`The ${this.make} is traveling at ${this.speed}`);
+    }
+    get speedUS() {
+        return this.speed / 1.6;
+    }
+    set speedUS(mph) {
+        this.mph = mph * 1.6
+
+    }
+}
+
+const ford = new Car('Ford', 120);
+console.log(ford);
+console.log(ford.speedUS);
+
+ford.speedUS = 50
+console.log(ford);
+
+ford.accelerate()
+ford.accelerate()
+
+ford.brake()
+
+
+
