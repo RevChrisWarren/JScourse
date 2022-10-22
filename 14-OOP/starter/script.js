@@ -349,7 +349,7 @@ tesla.accelerate()
 
 tesla.brake()
 tesla.brake()
-*/
+
 
 //INHERITANCE USING E6 CLASSES
 class PersonCl {
@@ -400,3 +400,34 @@ const martha = new StudentCl('Martha Jones', 2012, 'Music')
 console.log(martha);
 martha.introduce();
 martha.calcAge();
+*/
+//Object.create
+const PersonProto = {
+    calcAge() {
+        console.log(2022 - this.birthYear);
+    },
+    init(firstName, birthYear) {
+        this.firstName = firstName
+        this.birthYear = birthYear
+    }
+}
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+    PersonProto.init.call(this, firstName, birthYear)
+    this.course = course;
+}
+
+
+StudentProto.introduce = function () {
+    console.log(`Hi! My name is ${this.firstName}. I am ${2022 - this.birthYear} years old, and I study ${this.course}.`);
+}
+const jay = Object.create(StudentProto);
+jay.init('Jay', 1882, 'Math')
+
+console.log(jay);
+
+jay.calcAge()
+jay.introduce()
