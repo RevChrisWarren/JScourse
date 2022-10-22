@@ -106,7 +106,7 @@ mercedes.accelerate()
 bmw.brake()
 mercedes.brake()
 mercedes.brake()
-*/
+
 
 //ES6 CLASSES
 //class expression
@@ -195,3 +195,33 @@ Person.hey = function () {
 Person.hey()
 
 PersonCl.hey()
+
+//Object.create
+const PersonProto = {
+    calcAge() {
+        console.log(2022 - this.birthYear);
+    },
+    init(firstName, birthYear) {
+        this.firstName = firstName
+        this.birthYear = birthYear
+    }
+}
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+
+steven.calcAge()
+
+console.log(steven.__proto__);
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+console.log(sarah);
+sarah.init('Sarah', 1979)
+console.log(sarah);
+sarah.calcAge()
+*/
