@@ -305,3 +305,47 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 */
 
+const Car = function (make, speed) {
+    this.make = make;
+    this.speed = speed;
+}
+Car.prototype.accelerate = function () {
+    //this.speed +=10
+    this.speed = this.speed + 10
+    console.log(this.speed);
+
+};
+Car.prototype.brake = function () {
+    //this,speed -= 5
+    this.speed = this.speed - 5;
+    console.log(this.speed);
+}
+
+const EV = function (make, speed, charge) {
+    Car.call(this, make, speed)
+    this.charge = charge
+}
+EV.prototype = Object.create(Car.prototype)
+const tesla = new EV('Tesla', 120, 23);
+
+console.log(tesla);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+    this.charge = chargeTo
+}
+tesla.chargeBattery(90);
+
+EV.prototype.accelerate = function () {
+    this.speed += 20;
+    this.charge -= 1;
+    console.log(`${this.make} is going at a speed of ${this.speed}km/h, with a charge of ${this.charge}%`);
+}
+EV.prototype.constructor = EV;
+console.log(tesla);
+tesla.accelerate()
+tesla.accelerate()
+tesla.accelerate()
+tesla.accelerate()
+
+tesla.brake()
+tesla.brake()
