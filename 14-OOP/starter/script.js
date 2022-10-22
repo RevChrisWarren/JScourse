@@ -136,6 +136,11 @@ class PersonCl {
     get fullName() {
         return this._fullName
     }
+
+    static hey() {
+        console.log('Hey There!');
+        console.log(this);
+    }
 }
 
 
@@ -155,6 +160,7 @@ jessica.greet()
 const walter = new PersonCl('Walter Jones', 1958)
 
 console.log(walter.age)
+
 //NOTES:
 // 1. Classes are not hoisted
 // 2. Classes are first class citizens like functions
@@ -181,3 +187,11 @@ account.latest = 50;
 console.log(account.movements);
 
 
+//STATIC METHODS--not in prototype, so instances can't inherit it
+Person.hey = function () {
+    console.log('Hey There!');
+    console.log(this);
+}
+Person.hey()
+
+PersonCl.hey()
