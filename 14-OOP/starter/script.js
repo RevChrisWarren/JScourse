@@ -303,7 +303,7 @@ console.log(mike instanceof Object);
 
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
-*/
+
 
 const Car = function (make, speed) {
     this.make = make;
@@ -349,3 +349,54 @@ tesla.accelerate()
 
 tesla.brake()
 tesla.brake()
+*/
+
+//INHERITANCE USING E6 CLASSES
+class PersonCl {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
+    //This will be on the prototype, not on the object itself
+    calcAge() {
+        console.log(2022 - this.birthYear);
+    }
+    get age() {
+        return 2022 - this.birthYear
+    }
+
+    //Common pattern for setting property that already exists
+    set fullName(name) {
+        console.log(name);
+        if (name.includes(' ')) this._fullName = name;
+        else alert(`${name} is not a full name.`)
+    }
+
+    get fullName() {
+        return this._fullName
+    }
+
+    static hey() {
+        console.log('Hey There!');
+        console.log(this);
+    }
+}
+class StudentCl extends PersonCl {
+    constructor(fullName, birthYear, course) {
+        //This needs to happen first--creates "this" keyword in subclass
+        super(fullName, birthYear)
+        this.course = course;
+    }
+    introduce() {
+        console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+    }
+    calcAge() {
+        console.log(`I'm ${2022 - this.birthYear} years old, but as a student I feel more like ${2032 - this.birthYear}`);
+    }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Music')
+
+console.log(martha);
+martha.introduce();
+martha.calcAge();
