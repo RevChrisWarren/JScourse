@@ -432,36 +432,56 @@ console.log(jay);
 jay.calcAge()
 jay.introduce()
 */
+//
+// Public Fields
+// Private Fields
+// Public Methods
+// Private Methods
+
+//There are also static versions
+
 
 class Account {
+    // 1) Defining a  Public Field --Not on prototype, on instances 
+    locale = navigator.language;
+
+
+    // 2) Private Fields
+    #movements = [];
+    #pin;
+
     constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
+        this.#pin = pin;
 
-        this._pin = pin;
         //Protected property
-        this._movements = [];
-        this.locale = navigator.language
+        // this._movements = [];
+        // this.locale = navigator.language
         console.log(`Thanks for opening an account ${owner}!`);
     }
     //Public Interface of objects
+    //Also Public Methods
     getMovements() {
-        return this._movements;
+        return this.#movements;
     }
     deposit(val) {
-        this._movements.push(val)
+        this.#movements.push(val)
     }
     withdrawal(val) {
         this.deposit(-val)
     }
-    _approveLoan(val) {
-        return true;
-    }
+
     requestLoan(val) {
         if (this._approveLoan(val)) {
             this.deposit(val)
             console.log('Loan Approved');
         }
+    }
+    //Private Methods--not implemented in JS yet
+    // #approveLoan(val) {
+    _approveLoan(val) {
+        return true;
     }
 }
 
@@ -481,5 +501,6 @@ console.log(acct1);
 //Encapsulation convention
 
 console.log(acct1.getMovements())
-console.log(acct1.pin);
-
+// console.log(acct1.#pin);
+// console.log(acct1.#movements);
+// console.log(acct1.#approveLoan(100));
