@@ -400,7 +400,7 @@ const martha = new StudentCl('Martha Jones', 2012, 'Music')
 console.log(martha);
 martha.introduce();
 martha.calcAge();
-*/
+
 //Object.create
 const PersonProto = {
     calcAge() {
@@ -431,3 +431,43 @@ console.log(jay);
 
 jay.calcAge()
 jay.introduce()
+*/
+
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language
+        console.log(`Thanks for opening an account ${owner}!`);
+    }
+    //Public Interface of objects
+    deposit(val) {
+        this.movements.push(val)
+    }
+    withdrawal(val) {
+        this.deposit(-val)
+    }
+    approveLoan(val) {
+        return true;
+    }
+    requestLoan(val) {
+        if (this.approveLoan(val))
+            this.deposit(val)
+        console.log('Loan Approved');
+    }
+}
+
+const acct1 = new Account('Jonas', "EUR", 1111);
+
+
+// Not a good idea
+// acct1.movements.push[250]
+// acct1.movements.push[-250]
+
+acct1.deposit(250)
+acct1.withdrawal(150)
+acct1.requestLoan(1000)
+
+console.log(acct1);
