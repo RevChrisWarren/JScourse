@@ -514,3 +514,68 @@ acct1.deposit(300).deposit(500).withdrawal(35).requestLoan(25000).withdrawal(400
 
 console.log(acct1.getMovements());
 */
+class carCl {
+    constructor(make, speed) {
+        this.make = make;
+        this.speed = speed;
+    }
+    accelerate() {
+        this.speed += 10;
+        console.log((`${this.make} is going at ${this.speed}km/h`));
+        return this
+    }
+    brake() {
+        this.speed -= 5;
+        console.log(`${this.make} is going at ${this.speed} km/h`);
+        return this
+    }
+    get speedUS() {
+        this.speed = speed / 1.6;
+    }
+    set speedUS(speed) {
+        this.speed * 1.6
+    }
+}
+
+class EVCl extends carCl {
+    #charge;
+    constructor(make, speed, charge) {
+        super(make, speed)
+        this.#charge = charge;
+
+    }
+    brake() {
+        this.speed -= 5;
+        console.log(`${this.make} is traveling at a rate of ${this.speed} and has a charge of ${this.#charge}%`);
+        return this;
+    }
+    acclerate() {
+        this.speed += 10;
+        this.#charge -= 1;
+        return this;
+    }
+    chargeBattery(chargeTo) {
+        this.#charge = chargeTo;;
+        console.log(`${this.make} is traveling at a rate of ${this.speed} and has a charge of ${this.#charge}%`);
+        return this;
+
+    }
+}
+
+const rivian = new EVCl('Rivian', 120, 23)
+console.log(rivian);
+
+rivian.accelerate()
+rivian.accelerate()
+rivian.accelerate()
+rivian.accelerate()
+
+rivian.brake()
+rivian.brake()
+rivian.brake()
+rivian.brake()
+
+rivian.chargeBattery(100);
+rivian.brake().accelerate().brake().chargeBattery(45).brake()
+
+
