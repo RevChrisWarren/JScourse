@@ -431,7 +431,7 @@ console.log(jay);
 
 jay.calcAge()
 jay.introduce()
-*/
+
 //
 // Public Fields
 // Private Fields
@@ -513,3 +513,4 @@ console.log(acct1.getMovements())
 acct1.deposit(300).deposit(500).withdrawal(35).requestLoan(25000).withdrawal(4000);
 
 console.log(acct1.getMovements());
+*/
