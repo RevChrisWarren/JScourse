@@ -467,15 +467,18 @@ class Account {
     }
     deposit(val) {
         this.#movements.push(val)
+        return this
     }
     withdrawal(val) {
         this.deposit(-val)
+        return this
     }
 
     requestLoan(val) {
         if (this._approveLoan(val)) {
             this.deposit(val)
             console.log('Loan Approved');
+            return this;
         }
     }
     //Private Methods--not implemented in JS yet
@@ -504,3 +507,9 @@ console.log(acct1.getMovements())
 // console.log(acct1.#pin);
 // console.log(acct1.#movements);
 // console.log(acct1.#approveLoan(100));
+
+//Return object at end of method we want to be chainable
+
+acct1.deposit(300).deposit(500).withdrawal(35).requestLoan(25000).withdrawal(4000);
+
+console.log(acct1.getMovements());
