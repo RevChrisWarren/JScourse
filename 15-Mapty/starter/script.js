@@ -96,7 +96,7 @@ class App {
         //L is the Leaflet function
 
         const coords = [latitude, longitude]
-        console.log(this);
+        //console.log(this);
         this.#map = L.map('map').setView(coords, 13);
 
         L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -118,6 +118,14 @@ class App {
         this.#mapEvent = mapE;
         form.classList.remove('hidden');
         inputDistance.focus();
+    }
+    _hideForm() {
+        //empty inputs
+        inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
+        //add Hidden class
+        form.style.display = 'none'
+        form.classList.add('hidden');
+        setTimeout(() => form.style.display = 'grid', 1000)
     }
 
     _toggleElevationField() {
@@ -161,19 +169,19 @@ class App {
         //If activity is Cycling, create cycling object
         if (type === 'cycling') {
             const elevation = +inputElevation.value;
-            console.log(elevation);
+            //console.log(elevation);
 
             if (!validInputs(distance, duration, elevation)
                 ||
                 !isPositive(distance, duration))
                 return alert('Inputs have to be positive numbers!');
             workout = new Cycling([lat, lng], distance, duration, elevation);
-            console.log(elevation);
+            //console.log(elevation);
         }
 
         //add new workout to workout array
         this.#workouts.push(workout);
-        console.log(workout);
+        //console.log(workout);
         //render workout on map with marker
         this._renderWorkoutMarker(workout);
         //render workout on list
@@ -184,9 +192,13 @@ class App {
 
         inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
 
+        //Hide input form
 
+        this._hideForm();
 
     }
+
+
     _renderWorkoutMarker(workout) {
         L.marker(workout.coords)
             .addTo(this.#map)
@@ -198,7 +210,7 @@ class App {
                 className: `${workout.type}-popup`,
 
             }))
-            .setPopupContent('workout.distance')
+            .setPopupContent(`${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`)
             .openPopup();
 
     }
