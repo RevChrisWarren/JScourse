@@ -79,5 +79,20 @@ const getCountryAndNeighbor = function (country) {
     });
 };
 
-getCountryAndNeighbor('usa');
+getCountryAndNeighbor('china');
 
+setTimeout(() => {
+    console.log('One second passed');
+    setTimeout(() => {
+        console.log('Two seconds passed');
+        setTimeout(() => {
+            console.log('Three seconds passed');
+            setTimeout(() => {
+                console.log('Four seconds passed');
+                setTimeout(() => {
+                    console.log('Five seconds passed');
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    }, 1000)
+}, 1000)
