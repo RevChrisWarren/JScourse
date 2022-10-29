@@ -117,7 +117,7 @@ setTimeout(() => {
         }, 1000)
     }, 1000)
 }, 1000)
-*/
+
 // const request = new XMLHttpRequest();
 // request.open('GET', `https://restcountries.com/v2/name/${country}`);
 // request.send();
@@ -195,4 +195,43 @@ btn.addEventListener('click', function () {
     getCountryData('portugal')
 });
 
-// getCountryData('australia')
+// // const getCountryData = function (country) {
+//     //Country 1
+//     fetch(`https://restcountries.com/v2/name/${country}`)
+//         .then(response => {
+//             console.log(response);
+
+//             if (!response.ok)
+//                 throw new Error(`Country not found(${response.status})`)
+//             return response.json()
+//         })
+//         .then(data => {
+//             renderCountry(data[0]);
+//             const neighbor = data[0].borders[0];
+//             if (!neighbor) return;
+const api = '1b92b52d7f624582a42a78a29c528f45'
+const whereAmI = function (lat, lon) {
+    fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${api}`)
+
+        .then(response =>
+            response.json())
+        .then(result => {
+            console.log(result)
+            const country = result.features[0].properties.country
+            const city = result.features[0].properties.city
+            console.log(`You are in ${city}, ${country}`)
+
+            getCountryData(country)
+            if (!country) throw new Error(`Country not found ${error.message}`)
+
+        })
+        .catch(err => console.err(`${err.message}  🔴 Something went wrong!`))
+
+
+    // console.log(country)
+
+}
+
+whereAmI(-33.933, 18.474
+)
+*/
