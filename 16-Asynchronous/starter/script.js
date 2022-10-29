@@ -261,3 +261,44 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 });
 
 lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+//Promisifying setTimeout
+
+const wait = function (seconds) {
+    return new Promise(function (resolve, _) {
+        setTimeout(resolve, seconds * 1000);
+    })
+};
+
+wait(1).then(() => {
+    console.log('1 Second passed')
+    return wait(1);
+}).then(() => {
+    console.log('2 Seconds passed')
+    return wait(1);
+}).then(() => {
+    console.log('3 Seconds passed')
+    return wait(1);
+}).then(() => {
+    console.log('4 Seconds passed')
+    return wait(1);
+}).then(() => console.log('5 Seconds passed'));
+
+// setTimeout(() => {
+//     console.log('One second passed');
+//     setTimeout(() => {
+//         console.log('Two seconds passed');
+//         setTimeout(() => {
+//             console.log('Three seconds passed');
+//             setTimeout(() => {
+//                 console.log('Four seconds passed');
+//                 setTimeout(() => {
+//                     console.log('Five seconds passed');
+//                 }, 1000)
+//             }, 1000)
+//         }, 1000)
+//     }, 1000)
+// }, 1000)
+
+Promise.resolve('abc').then(res => console.log('resolved'))
+Promise.reject(new Error('def')).catch(rej => console.error('rejected'))
