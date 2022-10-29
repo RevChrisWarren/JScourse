@@ -247,3 +247,17 @@ Promise.resolve('Resolved promise 2').then(res => {
 
 console.log('test end');
 */
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+    console.log('Lottery Ticket purchased...');
+    setTimeout(function () {
+        if (Math.random() >= .5) {
+            //Marks promise as fulfilled promise
+            resolve('You WIN 😀')
+        } else {
+            reject(new Error('Sorry, you lost your money 😔'))
+        }
+    }, 2000)
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
