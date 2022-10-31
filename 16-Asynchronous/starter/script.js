@@ -348,7 +348,7 @@ const whereAmI2 = function () {
 }
 
 btn.addEventListener('click', whereAmI2)
-*/
+
 const api = '1b92b52d7f624582a42a78a29c528f45'
 const getPosition = function () {
     return new Promise(function (resolve, reject) {
@@ -363,24 +363,37 @@ const whereAmI = async function () {
         const geocoding = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&apiKey=${api}`)
         if (!geocoding.ok) throw new Error('Problem getting location data')
         const dataGeo = await geocoding.json();
-        console.log(dataGeo);
+        // console.log(dataGeo);
 
         const country = dataGeo.features[0].properties.country
         const res = await fetch(`https://restcountries.com/v2/name/${country}`);
-        console.log(res);
+        // console.log(res);
         if (!res.ok) throw new Error('Problem getting country')
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         renderCountry(data[0]);
+        return `You are in ${dataGeo.features[0].properties.city}, ${dataGeo.features[0].properties.country}`
     } catch (err) {
         console.error(`${err}`)
         renderError(`Something Went Wrong 💥 ${err.message}`);
     }
 }
-whereAmI();
 
-console.log('First');
+console.log('1: will get location');
+// const city = whereAmI();
+// // console.log(city);
+// whereAmI().then(city => console.log(`2 ${city}`)).catch(err => console.error(err))
+//     .finally(() => console.log('3: Finished getting location'));
+(async function () {
+    try {
+        const city = await whereAmI();
+        console.log(`2: ${city}`)
+    } catch (err) {
+        console.error(`2: ${err.message}`)
+    }
+    console.log('3: Finished getting location')
 
+})();
 // try {
 //     let y = 1;
 //     const x = 2;
@@ -388,3 +401,12 @@ console.log('First');
 // } catch (err) {
 //     alert(err.message)
 // }
+*/
+
+const get3Countries = async function (c1, c2, c3) {
+    try {
+
+    } catch (err) {
+        console.error(`${err.message}`)
+    }
+}
