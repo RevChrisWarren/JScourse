@@ -349,7 +349,26 @@ const whereAmI2 = function () {
 
 btn.addEventListener('click', whereAmI2)
 */
-
-const whereAmI = async function (country) {
-    await fetch(`https://restcountries.com/v2/name/${country}`);
+const api = '1b92b52d7f624582a42a78a29c528f45'
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(position => resolve(position), err => reject(err)
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+    })
 }
+const whereAmI = async function () {
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+    const geocoding = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&apiKey=${api}`)
+    const dataGeo = await geocoding.json();
+    console.log(dataGeo);
+    const country = dataGeo.features[0].properties.country
+    const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+}
+
+whereAmI()
+console.log('First');
