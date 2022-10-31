@@ -302,7 +302,7 @@ wait(1).then(() => {
 
 Promise.resolve('abc').then(res => console.log('resolved'))
 Promise.reject(new Error('def')).catch(rej => console.error('rejected'))
-*/
+
 
 // navigator.geolocation.getCurrentPosition(position => console.log(position), err => console.log(err)
 // );
@@ -348,3 +348,8 @@ const whereAmI2 = function () {
 }
 
 btn.addEventListener('click', whereAmI2)
+*/
+
+const whereAmI = async function (country) {
+    await fetch(`https://restcountries.com/v2/name/${country}`);
+}
