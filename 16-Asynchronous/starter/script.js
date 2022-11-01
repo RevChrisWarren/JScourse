@@ -432,7 +432,7 @@ const get3Countries = async function (c1, c2, c3) {
 }
 get3Countries('germany', 'usa', 'russia')
  
-*/
+
 //Promise.race --receives array of promises and returns an array
 const getJSON = function (url, errorMsg = 'Something went wrong...') {
     return fetch(url).then(response => {
@@ -487,3 +487,64 @@ Promise.any([
     Promise.resolve('Success'),
 ]).then(res => console.log(res))
     .catch(err => console.log(err));
+*/
+
+
+const imgContainer = document.querySelector('.images')
+
+
+const createImage = function (imgPath) {
+    return new Promise(function (resolve, reject) {
+        const img = document.createElement('img')
+        img.src = imgPath
+
+        img.addEventListener('load', function () {
+            imgContainer.append(img)
+            resolve(img)
+        })
+        img.addEventListener('error', function () {
+            reject(new Error('Image not found'))
+        });
+    });
+};
+
+const wait = function (seconds) {
+    return new Promise(function (resolve, _) {
+        setTimeout(resolve, seconds * 1000);
+    })
+};
+
+
+const loadNPause = async function () {
+    try {
+        let img = await createImage('img/img-1.jpg')
+
+        console.log('image one loaded');
+        await wait(2)
+
+        img.style.display = 'none'
+        img = await createImage('img/img-2.jpg')
+
+        console.log('image two loaded');
+        await wait(2)
+
+        img.style.display = 'none'
+
+    } catch (err) { console.error(`${err.message}`) }
+}
+// loadNPause()
+
+const imgArr = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']
+
+const loadAll = async function (arr) {
+    try {
+        const imgs = imgArr.map(async img => await createImage(img))
+        console.log(imgs);
+
+        const imgEls = await Promise.all(imgs)
+        console.log(imgEls);
+        imgEls.forEach(img => img.classList.add('parallel'));
+    }
+    catch (err) { console.log(err) }
+}
+loadAll(imgArr)
