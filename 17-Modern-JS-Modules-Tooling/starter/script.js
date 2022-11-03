@@ -116,9 +116,7 @@ class Person {
 	constructor(name) {
 		this.name = name
 		console.log(`${this.greeting}, ${this.name}`);
-
 	}
-
 }
 const chris = new Person('Chris');
 
@@ -127,3 +125,7 @@ console.log('Chris' ?? null);
 console.log(cart.find(el => el.quantity >= 2));
 
 Promise.resolve('TEST').then(x => console.log(x))
+
+import 'core-js/stable'
+
+import 'regenerator-runtime/runtime'
