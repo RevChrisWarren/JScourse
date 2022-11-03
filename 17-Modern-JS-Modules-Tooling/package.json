@@ -1,0 +1,27 @@
+{
+  "name": "jscourse",
+  "version": "1.0.0",
+  "description": "This branch of the repo contains starter files and final code for all sections and projects of the course, **exactly as shown in the videos**.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./starter/index.html",
+    "build": "parcel build ./starter/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RevChrisWarren/JScourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RevChrisWarren/JScourse/issues"
+  },
+  "homepage": "https://github.com/RevChrisWarren/JScourse#readme",
+  "dependencies": {
+    "leaflet": "^1.9.2",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}

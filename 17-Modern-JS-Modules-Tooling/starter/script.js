@@ -12,7 +12,7 @@ console.log('Importing module');
 // console.log(ShoppingCart.totalPrice);
 //DONT MIX DEFAUL AND NAMED EXPORTS
 // import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js'
-import add, { cart } from './shoppingCart.js';
+// import add, { cart } from './shoppingCart.js';
 
 add('pizza', 2);
 add('dog food', 7);
@@ -89,6 +89,8 @@ const { addToCart } = require('./shoppingCart.js')
 
 //Intro to NPM Node Package Manager
 // import cloneDeep from '../../node_modules/lodash-es/cloneDeep.js'
+
+import add, { cart } from './shoppingCart.js';
 import cloneDeep from 'lodash-es'
 const state = {
 	cart: [
@@ -108,3 +110,20 @@ console.log(stateClone);
 if (module.hot) {
 	module.hot.accept
 }
+
+class Person {
+	greeting = 'Hey'
+	constructor(name) {
+		this.name = name
+		console.log(`${this.greeting}, ${this.name}`);
+
+	}
+
+}
+const chris = new Person('Chris');
+
+console.log('Chris' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+
+Promise.resolve('TEST').then(x => console.log(x))
