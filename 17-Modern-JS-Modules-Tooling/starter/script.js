@@ -43,7 +43,7 @@ console.log(lastPost);
 //Not very clean
 lastPost.then(res => console.log(res))
 
-// Better syntax 
+// Better syntax
 const lastPost2 = await getLastPost()
 console.log(lastPost2);
 
@@ -74,4 +74,15 @@ ShoppingCart2.addToCart('pizza', 2)
 
 console.log(ShoppingCart2);
 console.log(ShoppingCart2.shippingCost);
+
+
+//Common JS modules==Works in NodeJS
+
+export.addToCart = function (product, quantity) {
+	cart.push({ product, quantity });
+	console.log(`${quantity} ${product} added to cart(shipping cost is ${shippingCost})`);
+}
+
+//Import
+const { addToCart } = require('./shoppingCart.js')
 */
