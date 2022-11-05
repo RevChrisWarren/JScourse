@@ -34,8 +34,10 @@ const renderSpinner = function (parentEl) {
 const showRecipe = async function () {
   //Loading Recipe
   try {
+
+    const id = window.location.hash.slice(1);
     renderSpinner(recipeContainer);
-    const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`)
+    const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
     const data = await res.json();
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`)
@@ -57,9 +59,9 @@ const showRecipe = async function () {
     const markup = `
 
 <figure class="recipe__fig">
-<img src="${recipe.image}" alt="Tomato" class="recipe__img" />
+<img src=${recipe.image} alt="Tomato" class="recipe__img" />
 <h1 class="recipe__title">
-  <span>"${recipe.title}"</span>
+  <span>${recipe.title}</span>
 </h1>
 </figure>
 
@@ -150,4 +152,5 @@ ${recipe.ingredients.map(ing => {
   }
 
 }
-showRecipe();
+
+window.addEventListener('hashchange', showRecipe)
