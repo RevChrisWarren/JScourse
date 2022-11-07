@@ -23,9 +23,9 @@ const controlRecipes = async function () {
 
   } catch (err) {
     console.error(err)
+    recipeView.renderError()
   }
 };
-
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes)
