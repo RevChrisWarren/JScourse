@@ -13,6 +13,9 @@ class ResultsView extends View {
 
 	}
 	_generateMarkupPreview(result) {
+		const id = window.location.hash.slice(1);
+		console.log(result);
+		console.log(id);
 		return `
 		<li class="preview">
                     <a class="preview__link" href="#${result.id}">
@@ -24,7 +27,6 @@ class ResultsView extends View {
                           ${result.title}
                         </h4>
                         <p class="preview__publisher">${result.publisher}</p>
-						
 					  </div>
 					</div>
 				  </a>
